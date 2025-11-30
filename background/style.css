@@ -510,3 +510,182 @@
       width: 100%;
     }
   }
+/* ------------ MELHOR RESPONSIVIDADE GERAL -------------- */
+
+/* Tablets (até 900px) */
+@media (max-width: 900px) {
+  nav ul.menu {
+    gap: 1.8rem;
+  }
+
+  .hero-section .title {
+    font-size: 2rem;
+  }
+
+  .photos-container {
+    flex-wrap: wrap;
+    gap: 1.8rem;
+  }
+
+  .photo-block {
+    width: 180px;
+    height: 260px;
+  }
+
+  #servicos h2,
+  #quem-somos h2 {
+    font-size: 1.9rem;
+  }
+
+  .team-photo {
+    width: 150px;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-right-group {
+    width: 100%;
+    align-items: flex-start;
+  }
+}
+
+/* Celulares padrão (até 600px) */
+@media (max-width: 600px) {
+
+  /* MENU */
+  nav {
+    padding: 0.4rem 1rem;
+    border-radius: 18px;
+    font-size: 0.75rem;
+  }
+
+  nav ul.menu {
+    display: none; /* Esconde o menu — posso criar um menu mobile se quiser */
+  }
+
+  nav button.login-btn {
+    padding: 0.4rem 1.2rem;
+    font-size: 0.75rem;
+  }
+
+  nav .logo img {
+    width: 80px;
+    height: 55px;
+  }
+
+  /* HERO */
+  .hero-section {
+    margin: 2rem auto 4rem;
+  }
+
+  .hero-section .title {
+    font-size: 1.65rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-section .subtitle {
+    font-size: 1rem;
+  }
+
+  .btn-connect {
+    padding: 0.55rem 1.8rem;
+    font-size: 0.9rem;
+  }
+
+  /* FOTOS DO HERO */
+  .photos-container {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .photo-block {
+    width: 140px;
+    height: 200px;
+  }
+
+  /* SERVIÇOS */
+  .servico-card {
+    max-width: 100%;
+    padding: 1.5rem 1.2rem;
+  }
+
+  .servico-card h3 {
+    font-size: 1.2rem;
+  }
+
+  /* TIME */
+  .team-photo {
+    width: 120px;
+  }
+
+  .team-description {
+    font-size: 0.95rem;
+    margin-bottom: 4rem;
+  }
+
+  /* RODAPÉ */
+  footer {
+    padding: 2rem 1.5rem;
+  }
+
+  footer .footer-text {
+    font-size: 1.25rem;
+  }
+
+  .footer-socials {
+    gap: 1.2rem;
+  }
+
+  .footer-socials a {
+    width: 34px;
+    height: 34px;
+    font-size: 1.1rem;
+  }
+
+  .footer-right-group {
+    width: 100%;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+
+  .footer-buttons-group {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .footer-download-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+  }
+
+  .download-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Celulares muito pequenos (até 420px) */
+@media (max-width: 420px) {
+  .hero-section .title {
+    font-size: 1.45rem;
+  }
+
+  .photo-block {
+    width: 120px;
+    height: 170px;
+  }
+
+  .btn-connect {
+    width: 100%;
+    justify-content: center;
+  }
+
+  footer .footer-text {
+    font-size: 1.1rem;
+  }
+}
+

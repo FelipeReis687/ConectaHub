@@ -377,25 +377,138 @@ html {
     color: #1e3a57;
 }
 
-/* Responsive */
+/* ===============================
+   RESPONSIVIDADE PARA TABLETS
+   (até 900px)
+================================*/
 @media(max-width: 900px) {
+
     .container {
         flex-direction: column;
+        height: auto;
     }
 
     .panel {
         width: 100vw;
-        height: 50vh;
+        height: auto;
+        padding: 50px 30px;
     }
 
+    /* Painéis animados deixam de ser laterais */
     .hidden-left,
     .hidden-right,
     .visible {
         position: relative !important;
         transform: none !important;
         opacity: 1 !important;
-        z-index: 2 !important;
-        width: 100vw;
-        height: 50vh;
+        width: 100vw !important;
+        height: auto !important;
+    }
+
+    /* Títulos */
+    .login-left-panel h1,
+    .signup-right-panel h2 {
+        font-size: 1.8rem;
+    }
+
+    .login-right-panel h2,
+    .signup-left-panel h2 {
+        font-size: 1.6rem;
+    }
+
+    /* Inputs */
+    .input-group input {
+        padding: 14px 14px 14px 42px;
+        font-size: 15px;
+    }
+
+    /* Botões maiores */
+    .btn-login,
+    .btn-cadastrar,
+    .btn-cadastrar-signup,
+    .btn-entrar-signup {
+        padding: 12px 50px;
+        font-size: 16px;
+    }
+}
+/* ===============================
+   RESPONSIVIDADE PARA CELULARES
+   (até 600px)
+================================*/
+@media(max-width: 600px) {
+
+    .panel {
+        padding: 40px 20px;
+    }
+
+    /* Reduz tamanho dos textos */
+    .login-left-panel h1,
+    .signup-right-panel h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .login-left-panel p,
+    .signup-right-panel p {
+        font-size: 13px;
+        line-height: 1.4;
+        margin-bottom: 20px;
+    }
+
+    .login-right-panel h2,
+    .signup-left-panel h2 {
+        font-size: 1.4rem;
+    }
+
+    /* Ícones sociais */
+    .social-icons {
+        gap: 10px;
+    }
+
+    .social-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    /* Inputs mais espaçosos e clicáveis */
+    .input-group input {
+        font-size: 14px;
+        padding: 14px 14px 14px 40px;
+        border-radius: 6px;
+    }
+
+    .icon {
+        font-size: 16px;
+        left: 10px;
+    }
+
+    /* Links */
+    .forgot-password {
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+
+    /* Botões */
+    .btn-login,
+    .btn-cadastrar-signup,
+    .btn-entrar-signup {
+        width: 100%;
+        padding: 13px 0;
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .btn-cadastrar {
+        padding: 10px 30px;
+        font-size: 15px;
+    }
+
+    /* Organiza melhor os painéis */
+    .login-left-panel,
+    .login-right-panel,
+    .signup-left-panel,
+    .signup-right-panel {
+        text-align: center;
     }
 }
