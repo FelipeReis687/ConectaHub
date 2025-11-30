@@ -85,7 +85,7 @@ html {
 
 /* ===============================
        Tela 1 - Login
-    ================================ */
+================================ */
 .login-left-panel {
     background-color: #1e3a57;
     color: white;
@@ -244,7 +244,7 @@ html {
 
 /* ===============================
        Tela 2 - Cadastro
-    ================================ */
+================================ */
 .signup-left-panel {
     background-color: white;
     color: #131313;
@@ -394,43 +394,9 @@ html {
         padding: 50px 30px;
     }
 
-    /* Painéis animados deixam de ser laterais */
-    .hidden-left,
-    .hidden-right,
-    .visible {
-        position: relative !important;
-        transform: none !important;
-        opacity: 1 !important;
-        width: 100vw !important;
-        height: auto !important;
-    }
-
-    /* Títulos */
-    .login-left-panel h1,
-    .signup-right-panel h2 {
-        font-size: 1.8rem;
-    }
-
-    .login-right-panel h2,
-    .signup-left-panel h2 {
-        font-size: 1.6rem;
-    }
-
-    /* Inputs */
-    .input-group input {
-        padding: 14px 14px 14px 42px;
-        font-size: 15px;
-    }
-
-    /* Botões maiores */
-    .btn-login,
-    .btn-cadastrar,
-    .btn-cadastrar-signup,
-    .btn-entrar-signup {
-        padding: 12px 50px;
-        font-size: 16px;
-    }
+    /* Mantivemos animação! Não removemos transform/opacidade */
 }
+
 /* ===============================
    RESPONSIVIDADE PARA CELULARES
    (até 600px)
@@ -441,7 +407,6 @@ html {
         padding: 40px 20px;
     }
 
-    /* Reduz tamanho dos textos */
     .login-left-panel h1,
     .signup-right-panel h2 {
         font-size: 1.5rem;
@@ -460,7 +425,6 @@ html {
         font-size: 1.4rem;
     }
 
-    /* Ícones sociais */
     .social-icons {
         gap: 10px;
     }
@@ -471,7 +435,6 @@ html {
         font-size: 14px;
     }
 
-    /* Inputs mais espaçosos e clicáveis */
     .input-group input {
         font-size: 14px;
         padding: 14px 14px 14px 40px;
@@ -483,13 +446,11 @@ html {
         left: 10px;
     }
 
-    /* Links */
     .forgot-password {
         font-size: 13px;
         margin-bottom: 18px;
     }
 
-    /* Botões */
     .btn-login,
     .btn-cadastrar-signup,
     .btn-entrar-signup {
@@ -504,11 +465,242 @@ html {
         font-size: 15px;
     }
 
-    /* Organiza melhor os painéis */
     .login-left-panel,
     .login-right-panel,
     .signup-left-panel,
     .signup-right-panel {
         text-align: center;
+    }
+}
+
+/* ===============================
+   MENU / RESTANTE DO SEU CSS
+================================*/
+:root {
+  --navy:#0d3b5a;
+  --navy2:#0b2c4b;
+  --sky:#86aec7;
+  --beige:#fdeed5;
+  --card:#0b2c4b;
+  --text:#fff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Segoe UI',Tahoma,Arial,sans-serif;
+  background:#f2f5f7;
+  color:#121212;
+}
+
+/* ============================
+   MENU SUPERIOR RESPONSIVO
+============================ */
+.menu{
+  width:100%;
+  height:70px;
+  background:#0b233d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:45px;
+  padding:10px 20px;
+  position:fixed;
+  top:0; left:0;
+  z-index:1000;
+  border-bottom:3px solid #0e375a;
+}
+
+.menu-item{
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-decoration:none;
+  gap:4px;
+  font-size:12px;
+  opacity:.85;
+  transition:.25s ease;
+  transform:translateY(0);
+}
+
+.menu-item svg{
+  width:26px;
+  height:26px;
+}
+
+.menu-item:hover,
+.menu-item.active{
+  opacity:1;
+  transform:translateY(-4px);
+}
+
+/* MENU MOBILE */
+@media (max-width:650px){
+  .menu{
+    gap:22px;
+  }
+  .menu-item span{
+    font-size:10px;
+  }
+  .menu-item svg{
+    width:22px;height:22px;
+  }
+}
+
+/* ============================
+   ÁREA PRINCIPAL
+============================ */
+main{
+  padding:120px 40px 40px;
+}
+
+/* GRID DE CARTÕES */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:24px;
+}
+
+.card{
+  background:var(--navy2);
+  color:#fff;
+  border-radius:22px;
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  min-height:200px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.15);
+}
+
+.card-header{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.avatar{
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #fff;
+}
+
+.name{
+  font-size:17px;
+  font-weight:700;
+}
+
+.stars{
+  font-size:13px;
+  color:#ffd166;
+}
+
+.desc{
+  font-size:15px;
+  line-height:1.55;
+  opacity:.95;
+}
+
+/* INPUT FIXO */
+.input-bar{
+  position:fixed;
+  left:20px; right:20px; bottom:18px;
+  background:var(--beige);
+  border-radius:14px;
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+
+.plus{
+  width:26px;height:26px;
+  border-radius:8px;
+  background:#f1d7c3;
+  color:#7a4b31;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.field{flex:1;}
+.field input{
+  width:100%;
+  padding:10px 12px;
+  border:none;
+  background:transparent;
+  outline:none;
+  font-size:14px;
+  color:#333;
+}
+
+.send{
+  width:38px;height:38px;
+  border-radius:50%;
+  background:var(--sky);
+  color:#08314c;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
+}
+
+/* ==============================================
+   🚀 CORREÇÃO FINAL: ANIMAÇÃO FUNCIONANDO EM TODAS AS TELAS
+============================================== */
+
+/* CELULAR → animação vertical */
+@media(max-width: 600px) {
+
+    .hidden-left {
+        transform: translateY(-100%);
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    .hidden-right {
+        transform: translateY(100%);
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    .visible {
+        transform: translateY(0);
+        opacity: 1;
+        position: relative;
+        width: 100%;
+    }
+}
+
+/* TABLET → animação horizontal */
+@media(max-width: 900px) and (min-width: 601px) {
+
+    .hidden-left {
+        transform: translateX(-100%);
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    .hidden-right {
+        transform: translateX(100%);
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    .visible {
+        transform: translateX(0);
+        opacity: 1;
+        position: relative;
+        width: 100%;
     }
 }
