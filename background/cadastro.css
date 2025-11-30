@@ -1,0 +1,401 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f3f2f5;
+    overflow-x: hidden;
+}
+
+/* Container principal ocupa toda a viewport */
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+/* Painéis das telas = metade da tela cada */
+.panel {
+    width: 50vw;
+    height: 100vh;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.forgot-password {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 25px;
+    cursor: pointer;
+    text-decoration: underline;
+    user-select: none;
+}
+
+.forgot-password:hover {
+    color: #333;
+}
+
+/* Estados para animação */
+.hidden-left {
+    transform: translateX(-100%);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 50vw;
+    height: 100vh;
+}
+
+.hidden-right {
+    transform: translateX(100%);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    width: 50vw;
+    height: 100vh;
+}
+
+.visible {
+    transform: translateX(0);
+    opacity: 1;
+    position: relative;
+    z-index: 2;
+    width: 50vw;
+    height: 100vh;
+}
+
+/* ===============================
+       Tela 1 - Login
+    ================================ */
+.login-left-panel {
+    background-color: #1e3a57;
+    color: white;
+    text-align: center;
+}
+
+.login-left-panel h1 {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.login-left-panel p {
+    margin-bottom: 35px;
+    line-height: 1.5;
+}
+
+.btn-cadastrar {
+    border: 1.5px solid white;
+    background: transparent;
+    color: white;
+    padding: 10px 35px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+}
+
+.btn-cadastrar:hover {
+    background-color: white;
+    color: #1e3a57;
+}
+
+.login-right-panel {
+    background-color: #f3f2f5;
+    color: #333;
+    align-items: center;
+    padding: 40px 30px;
+}
+
+.login-right-panel h2 {
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #131313;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.social-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    user-select: none;
+}
+
+.facebook {
+    background-color: #3b5998;
+}
+
+.google {
+    background-color: #db4437;
+}
+
+.linkedin {
+    background-color: #0077b5;
+}
+
+.use-email {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 10px;
+    user-select: none;
+}
+
+.input-group {
+    width: 100%;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    font-weight: 500;
+}
+
+.input-group.email input {
+    background-color: #7ab4c9;
+    color: white;
+}
+
+.input-group.senha input {
+    background-color: #f5e0df;
+    color: #7a4749;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 18px;
+}
+
+.icon.email::before {
+    content: "✉";
+    color: white;
+}
+
+.icon.senha::before {
+    content: "🔒";
+    color: #7a4749;
+}
+
+.forgot-password {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 25px;
+    cursor: pointer;
+    text-decoration: underline;
+    user-select: none;
+}
+
+.btn-login {
+    background-color: #1a1a2e;
+    color: white;
+    border: none;
+    padding: 12px 60px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+}
+
+.btn-login:hover {
+    background-color: #111126;
+}
+
+/* ===============================
+       Tela 2 - Cadastro
+    ================================ */
+.signup-left-panel {
+    background-color: white;
+    color: #131313;
+    padding: 40px 50px;
+    align-items: center;
+    text-align: center;
+}
+
+.signup-left-panel h2 {
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.signup-left-panel .social-icons {
+    margin-bottom: 12px;
+}
+
+.signup-left-panel .social-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+}
+
+.signup-left-panel .subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+    user-select: none;
+}
+
+.signup-left-panel form {
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-left-panel .input-group {
+    width: 100%;
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.signup-left-panel .input-group .icon {
+    font-size: 18px;
+    top: 50%;
+    left: 12px;
+    position: absolute;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.signup-left-panel .input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    outline: none;
+    font-weight: 500;
+}
+
+.signup-left-panel .input-group.nome input {
+    background-color: #7ab4c9;
+    color: #101010;
+}
+
+.signup-left-panel .input-group.email input,
+.signup-left-panel .input-group.senha input {
+    background-color: #f4e6da;
+    color: #110a0c;
+}
+
+.btn-cadastrar-signup {
+    width: 100%;
+    background-color: #16283e;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+}
+
+.btn-cadastrar-signup:hover {
+    background-color: #0f1a2b;
+}
+
+.signup-right-panel {
+    background: linear-gradient(180deg, #416a8d 0%, #1e3a57 100%);
+    color: white;
+    padding: 40px 50px;
+    align-items: center;
+    text-align: center;
+}
+
+.signup-right-panel h2 {
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.signup-right-panel p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    user-select: none;
+}
+
+.btn-entrar-signup {
+    border: 1.5px solid white;
+    background: transparent;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 10px 50px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+}
+
+.btn-entrar-signup:hover {
+    background-color: white;
+    color: #1e3a57;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .panel {
+        width: 100vw;
+        height: 50vh;
+    }
+
+    .hidden-left,
+    .hidden-right,
+    .visible {
+        position: relative !important;
+        transform: none !important;
+        opacity: 1 !important;
+        z-index: 2 !important;
+        width: 100vw;
+        height: 50vh;
+    }
+}

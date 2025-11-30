@@ -1,0 +1,124 @@
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #f2f2f2;
+    display: flex;
+}
+
+/* MENU LATERAL */
+.menu {
+    width: 60px;
+    background: #0b233d;
+    height: 100vh;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.menu-item {
+    width: 100%;
+    height: 60px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.7;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.menu-item.active,
+.menu-item:hover {
+    background: #1c3959;
+    border-radius: 8px;
+    opacity: 1;
+}
+
+.menu-item img {
+    width: 25px;
+    margin-bottom: 5px;
+}
+
+.menu-item svg {
+    width: 25px;
+    height: 25px;
+    margin-bottom: 5px;
+}
+
+.menu-item span {
+    font-size: 11px;
+}
+
+/* ÁREA PRINCIPAL */
+main {
+    flex: 1;
+    padding: 40px;
+}
+
+/* CARD */
+.card {
+    width: 100%;
+    height: 360px;
+    background: linear-gradient(135deg, #103a55, #2d6a87);
+    border-radius: 30px;
+    display: flex;
+    padding: 40px;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+}
+
+.left {
+    max-width: 450px;
+}
+
+.logo {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.descricao {
+    font-size: 13px;
+    opacity: 0.9;
+    line-height: 18px;
+    margin-bottom: 35px;
+}
+
+.btn {
+    background: black;
+    color: white;
+    font-weight: 600;
+    padding: 15px 30px;
+    border-radius: 50px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.arrow {
+    font-size: 18px;
+}
+
+/* PERSONAGEM */
+.personagem {
+    height: 300px;
+    object-fit: contain;
+}

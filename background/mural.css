@@ -1,0 +1,74 @@
+
+    :root { --navy:#0d3b5a; --navy2:#0b2c4b; --sky:#86aec7; --beige:#fdeed5; --card:#0b2c4b; --text:#fff; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;background:#f2f5f7;color:#121212;display:flex}
+
+    /* MENU LATERAL */
+    .menu{width:60px;background:#0b233d;height:100vh;padding-top:20px;display:flex;flex-direction:column;align-items:center;gap:25px}
+    .menu-item{width:100%;height:60px;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;opacity:.9;text-decoration:none}
+    .menu-item.active,.menu-item:hover{background:#1c3959;border-radius:8px;opacity:1}
+    .menu-item svg{width:25px;height:25px}
+    .menu-item span{font-size:11px}
+
+    /* MURAL */
+    main{flex:1;padding:40px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(260px,1fr));gap:24px}
+
+    /* ===== CARTÃO IGUAL AO LAYOUT DA IMAGEM ===== */
+    .card{
+      background:#0b2c4b;
+      color:#fff;
+      border-radius:22px;
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      min-height:200px;
+      box-shadow:0 3px 10px rgba(0,0,0,0.15);
+    }
+
+    .card-header{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .avatar{
+      width:55px;
+      height:55px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid #fff;
+    }
+
+    .name{
+      font-size:17px;
+      font-weight:700;
+    }
+
+    .stars{
+      font-size:13px;
+      letter-spacing:2px;
+      color:#ffd166;
+    }
+
+    .desc{
+      font-size:15px;
+      line-height:1.55;
+      opacity:.96;
+    }
+
+    /* INPUT */
+    .input-bar{
+      position:fixed;left:90px;right:24px;bottom:18px;background:var(--beige);
+      border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:12px;
+      box-shadow:0 2px 8px rgba(0,0,0,.06)
+    }
+    .plus{width:26px;height:26px;border-radius:8px;background:#f1d7c3;color:#7a4b31;display:flex;align-items:center;justify-content:center;font-weight:800;cursor:pointer}
+    .field{flex:1}
+    .field input{width:100%;padding:10px 12px;border:none;outline:none;background:transparent;color:#333;font-size:14px;font-weight:600}
+    .send{width:36px;height:36px;border-radius:50%;background:var(--sky);color:#08314c;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+    .send svg{width:18px;height:18px}
+
+    @media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(240px,1fr))}}
+    @media(max-width:680px){.grid{grid-template-columns:1fr}.input-bar{left:84px}}

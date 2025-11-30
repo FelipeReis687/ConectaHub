@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mural • ConectaHub</title>
+  <link rel="stylesheet" href="../background/mural.css" />
+</head>
+<body>
+
+  <!-- MENU -->
+  <aside class="menu">
+    <a href="chat.html" class="menu-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <span>Chat</span>
+    </a>
+
+    <a href="mural.html" class="menu-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v4H3z"/><path d="M3 11h18v10H3z"/></svg>
+      <span>Mural</span>
+    </a>
+
+    <a href="game.html" class="menu-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.61 10.79L5 21h14l-1.61-10.21"/><path d="M10 12l1-3 2 3 3-3"/></svg>
+      <span>Game</span>
+    </a>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main>
+    <section class="grid" id="grid"></section>
+  </main>
+
+  <!-- INPUT -->
+  <div class="input-bar">
+    <div class="plus">+</div>
+
+    <div class="field">
+      <input id="noteInput" type="text" placeholder="Digite uma nota" />
+    </div>
+
+    <button class="send" id="noteSend" aria-label="Enviar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 2L11 13"/>
+        <path d="M22 2L15 22"/>
+        <path d="M2 12l9 1"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Firebase CDN -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <!-- SCRIPT -->
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyC13wSq4nvjZIWW8G7pStco5MKUsxBYiPA",
+    authDomain: "conectahub-1f810.firebaseapp.com",
+    projectId: "conectahub-1f810",
+    storageBucket: "conectahub-1f810.firebasestorage.app",
+    messagingSenderId: "1071669291596",
+    appId: "1:1071669291596:web:cf8b525e1888fdb2a9e2e9",
+    measurementId: "G-MYKYNDG9LR"
+  };
+
+  if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  const grid = document.getElementById("grid");
+  const input = document.getElementById("noteInput");
+  const send = document.getElementById("noteSend");
+
+  let currentUser = null;
+
+  auth.onAuthStateChanged(async (user) => {
+    if (!user) {
+      window.location.href = "cadastro.html";
+      return;
+    }
+    currentUser = user;
+    listenMuralRealtime();
+  });
+
+  async function addNoteToFirestore(text) {
+    const userDoc = await db.collection("users").doc(currentUser.uid).get().catch(()=>null);
+    const u = userDoc ? (userDoc.data() || {}) : {};
+
+    return db.collection("mural").add({
+      text,
+      fixed: false,
+      userId: currentUser.uid,
+      userName: u.displayName || (currentUser.email ? currentUser.email.split("@")[0] : "Usuário"),
+      userAvatar:
+        u.avatar ||
+        `https://ui-avatars.com/api/?name=${encodeURIComponent(u.displayName || currentUser.email || "U")}&background=0d3b5a&color=fff`,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }
+
+  function renderNote(data) {
+    const card = document.createElement("article");
+    card.className = "card";
+    if (data.fixed === true) card.classList.add("fixed");
+
+    // fallbacks seguros
+    const avatar = data.userAvatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(data.userName||"U")}&background=0d3b5a&color=fff`;
+    const name = data.userName || "Usuário";
+    const text = data.text || "";
+
+    card.innerHTML = `
+      <div class="card-header">
+        <img class="avatar" src="${avatar}" />
+        <div>
+          <div class="name">${name}</div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+      <p class="desc">${text}</p>
+    `;
+    grid.appendChild(card);
+  }
+
+  function listenMuralRealtime() {
+    // garantimos ordenação por timestamp (desc). Isto exige que timestamp seja do tipo Timestamp nos docs.
+    db.collection("mural")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        try {
+          grid.innerHTML = "";
+
+          const fixedArr = [];
+          const normalArr = [];
+
+          snapshot.forEach((doc) => {
+            const data = doc.data() || {};
+
+            // se fixed não existir, definimos false localmente
+            if (data.fixed === true) {
+              fixedArr.push(data);
+            } else {
+              normalArr.push(data);
+            }
+          });
+
+          // renderiza fixas primeiro (manter ordem por timestamp já garantida pela query)
+          fixedArr.forEach(d => renderNote(d));
+          normalArr.forEach(d => renderNote(d));
+        } catch (err) {
+          console.error("Erro ao processar snapshot do mural:", err);
+        }
+      }, (error) => {
+        // Mostra erros de permissão, índices, etc.
+        console.error("onSnapshot error:", error);
+        alert("Erro ao escutar mural (ver console). Se for índice, a console do Firebase dará o link para criar o índice.");
+      });
+  }
+
+  function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+    addNoteToFirestore(text).catch(err => console.error("Erro ao enviar nota:", err));
+    input.value = "";
+  }
+
+  send.addEventListener("click", sendMessage);
+  input.addEventListener("keydown", (e) => { if (e.key === "Enter") sendMessage(); });
+</script>
+</body>
+</html>

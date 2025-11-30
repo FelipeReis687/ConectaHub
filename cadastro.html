@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Transição Login / Cadastro Fullscreen</title>
+    <link rel="stylesheet" href="../background/cadastro.css" />
+    <!-- Adicione isso no <head> do seu HTML -->
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- TELA 1: Primeiro site (Login) -->
+
+        <div id="login-left" class="panel login-left-panel visible">
+            <h1>Bem-vindo de volta!</h1>
+            <p>Conecte-se e mantenha a interação da equipe sempre em movimento na Conecta Hub.</p>
+            <button id="btnIrCadastro" class="btn-cadastrar">Cadastrar</button>
+        </div>
+        <div id="login-right" class="panel login-right-panel visible">
+            <h2>Acessar sua conta</h2>
+            <span class="use-email">Use seu melhor email!</span>
+            <div class="input-group email">
+                <input id="loginEmail" type="email" placeholder="Email" />
+            </div>
+            <div class="input-group senha">
+                <input id="loginSenha" type="password" placeholder="Senha" />
+            </div>
+            <a href="#" class="forgot-password" id="linkEsqueciSenha">Esqueceu da senha?</a>
+            <button id="btnLogin" class="btn-login" tabindex="1">Login</button>
+        </div>
+
+        <!-- TELA 2: Segundo site (Cadastro) -->
+
+        <div id="signup-left" class="panel signup-left-panel hidden-left">
+            <h2>Criar conta</h2>
+            <p class="subtitle">Use seu melhor email para registrar</p>
+
+            <form id="formCadastro" novalidate>
+                <div class="input-group nome">
+                    <input id="signupNome" type="text" placeholder="Nome" required />
+                </div>
+                <div class="input-group email">
+                    <input id="signupEmail" type="email" placeholder="Email" required />
+                </div>
+                <div class="input-group senha">
+                    <input id="signupSenha" type="password" placeholder="Senha" required />
+                </div>
+                <button id="btnCadastrar" type="submit" class="btn-cadastrar-signup">Cadastrar</button>
+            </form>
+        </div>
+        <div id="signup-right" class="panel signup-right-panel hidden-right">
+            <h2>Já possui conta?</h2>
+            <p>Acesse e continue conectado à Conecta Hub.</p>
+            <button id="btnVoltarLogin" class="btn-entrar-signup">Entrar</button>
+        </div>
+
+    </div>
+</body>
+<script src="../background/cadastro.js"></script>
+
+</html>
