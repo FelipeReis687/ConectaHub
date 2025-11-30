@@ -105,45 +105,34 @@
    RESPONSIVIDADE PARA CELULARES (até 600px)
    Layout mobile-first e otimizações visuais
    ========================================================== */
+/* ==========================================================
+   RESPONSIVIDADE PARA CELULARES (até 600px)
+   ========================================================== */
 @media (max-width: 600px) {
-
-    /* Layout vira: menu retrátil + chat */
+    
+    /* Mantém o menu e mostra a lista */
     .app {
-        grid-template-columns: 60px 1fr !important;
+        grid-template-columns: 60px 240px 1fr !important;
         height: 100vh;
     }
 
-    .rail,
+    .rail { 
+        display: none !important; 
+    }
+
+    /* A lista continua visível no mobile */
     .list {
-        display: none !important;
+        display: flex !important;
+        width: 240px !important;
     }
 
-    /* Header do chat mais compacto */
-    .chat-header {
-        margin: 10px !important;
-        padding: 8px 10px !important;
-        gap: 8px !important;
-    }
-
-    .chat-header img {
-        width: 34px !important;
-        height: 34px !important;
-    }
-
-    .chat-header .title .name {
-        font-size: 15px !important;
-    }
-
-    .chat-header .presence {
-        font-size: 10px !important;
-    }
-
-    /* Mensagens melhor adaptadas ao celular */
+    /* Ajuste das mensagens no mobile */
     .messages {
         padding: 10px 16px 80px !important;
         gap: 10px !important;
     }
 
+    /* Bolhas */
     .bubble {
         max-width: 88% !important;
         font-size: 14px !important;
@@ -151,53 +140,11 @@
         border-radius: 12px !important;
     }
 
-    .bubble .time {
-        font-size: 10px !important;
-    }
-
-    /* Input bar mobile-first */
     .input-bar {
         left: 10px !important;
         right: 10px !important;
         bottom: 10px !important;
         padding: 8px 10px !important;
         gap: 8px !important;
-    }
-
-    .plus {
-        width: 24px !important;
-        height: 24px !important;
-        font-size: 12px !important;
-    }
-
-    .field input {
-        font-size: 14px !important;
-        padding: 8px 10px !important;
-    }
-
-    .send {
-        width: 32px !important;
-        height: 32px !important;
-    }
-
-    .send svg {
-        width: 16px !important;
-        height: 16px !important;
-    }
-
-    /* Ajustes de texto */
-    .no-messages,
-    .loading,
-    .error-message {
-        font-size: 13px !important;
-        padding: 20px !important;
-    }
-
-    /* Botão logout */
-    .logout-btn {
-        top: 14px !important;
-        right: 14px !important;
-        padding: 8px 12px !important;
-        font-size: 13px !important;
     }
 }
